@@ -1,0 +1,79 @@
+[Main Data Processing Overview]
+
+- Cassandra data model/schema model
+- Stream to Cassandra
+    ☐ Install datadog agent to measure cassandra performance
+- Stream partial agregated info to kafka
+    ☐ Install datadog agent to measure kafka performance
+- Create API to query to Cassandra
+- Create API & websocket to consume kafka real time message
+- Merge user API to cassandra API
+- User Interface to the API
+
+[Sensor Management Related Task]
+- Enrich the environment variable with topic-for-command variable
+    ✔ command_mqtt_topic @done(18-06-23 20:01)
+    ✔ response_mqtt_topic @done(18-06-23 20:01)
+    ✔ global_mqtt_topic @done(18-06-23 20:01)
+    ✔ management_mqtt_server + port @done(18-06-23 20:01)
+    ✔ core_mqtt_topic @done(18-06-23 20:01)
+    ✔ core_mqtt_server + port @done(18-06-23 20:01)
+    ✔ device_id @done(18-06-23 20:01)
+    ✔ oinkcode @done(18-06-23 20:01)
+    ✔ protected_subnet @done(18-06-23 20:01)
+    ✔ external_subnet @done(18-06-23 20:01)
+    ✔ NETINT @done(18-06-23 20:01)
+    ✔ secret_key @done(18-06-23 20:01)
+        ✔ to encrypt and decrypt the message in management topic @done(18-06-23 20:01)
+    ✔ access_token @done(18-06-23 20:01)
+        ✔ to ensure the authenticity and integrity of message in management topic @done(18-06-23 20:01)
+- Create the general pipeline for installing Sensor
+    ☐ Register account in website
+    ☐ Create sensor instance from website, get installation script
+    ☐ Installation script do the rest
+- Create Installation script
+    ☐ Place operational script in the /etc/kaspacore
+        ☐ create snoqtt docker image /etc/kaspacore/create_snoqtt.sh
+        ☐ recreate snoqtt docker image /etc/kaspacore/recreate_snoqtt.sh
+        ☐ start snoqtt docker image /etc/kaspacore/start_snoqtt.sh
+        ☐ stop snoqtt docker instance /etc/kaspacore/stop_snoqtt.sh
+        ☐ remove snoqtt docker image /etc/kaspacore/remove_snoqtt.sh
+        ✔ pcap file folder  /etc/kaspacore/pcap/ @done(18-06-23 20:02)
+        ✔ config environment variable file /etc/kaspacore/env-conf.conf @done(18-06-23 20:02)
+        ☐ management topic message listener and response /etc/kaspacore/lib/command_listener.py
+        ☐ response function and definition /etc/kaspacore/lib/response_lib.py
+        ✔ dockerfile required folder /etc/kaspacore/dockerfile/ @done(18-06-23 20:02)
+    ☐ install docker
+- Enhanced the main mqtt server from mosquitto to activemq
+- create the general pipeline for sensor managemgent
+    ☐ communication using mqtt protocol, the mqtt server located in reachable server
+    ☐ each messages always carries access_token
+    ☐ each message encrypted with secret_key
+    ☐ each message also can be decrypted with secret_key
+    ☐ command_mqtt_topic
+        ☐ published by management sensor API
+        ☐ subscribed by each sensor for it's respective topic
+        ☐ each sensor has unique topic
+        ☐ get a hold of this responsibility
+            ☐ start snort instances
+            ☐ restart snort instances
+            ☐ stop snort instances
+            ☐ sensor status
+            ☐ get list of rules
+                ☐ all rules
+                ☐ activated rules
+                ☐ deactivated rules 
+            ☐ activate spesific rules
+            ☐ deactivate spesific rules
+            ☐ check for rule updates
+            ☐ add local rules
+            ☐ remove local rules
+    ☐ response_mqtt_topic
+        ☐ published by each sensor in response of message from command topic
+        ☐ subscribed by management sensor API
+        ☐ each sensor has unique topic
+        ☐ get a hold of this responsibility
+            ☐ return the status of each command
+            ☐ return the set list of rules (sig id) 
+    ☐ global_mqtt_topic
+        ☐ to be concluded later, for future development needs

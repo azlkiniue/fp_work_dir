@@ -1,0 +1,51 @@
+CQL Query
+✔ push raw_data @done(18-07-01 16:49)
+    Lihat semua raw data
+        select id, year, month, day, hour, minute, second, device_id, sig_id, alert_msg, src_ip, dest_ip 
+        from kaspa.raw_data
+    Lihat semua raw data per sensor
+        select id, year, month, day, hour, minute, second, device_id, sig_id, alert_msg, src_ip, dest_ip 
+        from kaspa.raw_data
+        where device_id = "nama sensor"
+    Lihat semua raw date per perusahaan/user
+        select id, year, month, day, hour, minute, second, device_id, sig_id, alert_msg, src_ip, dest_ip 
+        from kaspa.raw_data
+        where device_id = "nama sensor"
+    Lihat detail raw data berdasarkan ID
+        select * 
+        from kaspa.raw_data 
+        where id = "uuid"
+
+List Aggregate
+
+☐ Event count
+    ☐ Menampilkan event hit untuk semua sensor di semua perusahaan (admin)
+        select * from 
+    ☐ Menampilkan event hit untuk per semua sensor di satu perusahan (user/perusahaan)
+        Per detik
+        Per menit
+        Per jam
+        per hari
+        per bulan
+        per tahun
+
+Sensor statistic
+    Menampilkan metric semua sensor (admin)
+        Event hit
+        Signature hit / Alert message hit
+        Protocol Hit
+            Source port
+            Destination port
+    Menampilkan metric semua perusahaan (admin)
+        Event hit
+        Signature hit / Alert message hit
+        Protocol Hit
+            Source port
+            Destination port
+    Menampilkan metric untuk per semua sensor di satu perusahaan (user)
+        Event hit
+        Signature hit / Alert message hit
+        Protocol Hit
+            Source port
+            Destination port
+    

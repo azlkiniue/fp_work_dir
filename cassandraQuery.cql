@@ -41,7 +41,7 @@ CREATE TABLE kaspa.sensor_device(
     company text,       --Sensor owner
     topic_global text,  --Topic for global purposes, for future references
     topic_cmd text,     --Topic for commanding sensor
-    topic_resp text     --Topic for user response
+    topic_resp text,     --Topic for user response
 );
 
 CREATE TABLE kaspa.user(
@@ -150,7 +150,7 @@ CREATE TABLE kaspa.hourly_aggregate_country(
     year int,
     month int,
     day int,
-    hour int,
+    hour int
     country text,
     value counter,
 PRIMARY KEY ((device_id), year, month, day, hour)

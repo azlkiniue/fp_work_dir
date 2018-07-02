@@ -1,33 +1,71 @@
 CQL Query
 ✔ push raw_data @done(18-07-01 16:49)
-    Lihat semua raw data
-        select id, year, month, day, hour, minute, second, device_id, sig_id, alert_msg, src_ip, dest_ip 
-        from kaspa.raw_data
-    Lihat semua raw data per sensor
-        select id, year, month, day, hour, minute, second, device_id, sig_id, alert_msg, src_ip, dest_ip 
-        from kaspa.raw_data
-        where device_id = "nama sensor"
-    Lihat semua raw date per perusahaan/user
-        select id, year, month, day, hour, minute, second, device_id, sig_id, alert_msg, src_ip, dest_ip 
-        from kaspa.raw_data
-        where device_id = "nama sensor"
-    Lihat detail raw data berdasarkan ID
+    ✔ Lihat semua raw data @done(18-07-02 11:59)
         select * 
-        from kaspa.raw_data 
-        where id = "uuid"
+        from kaspa.raw_data_by_company
+    ✔ Lihat semua raw data per sensor @done(18-07-02 11:59)
+        select *
+        from kaspa.raw_data_by_device_id
+        where device_id = "nama sensor"
+    ✔ Lihat semua raw date per perusahaan/user @done(18-07-02 11:59)
+        select *
+        from kaspa.raw_data_by_company
+        where device_id = "company"
 
-List Aggregate
+✔ Sensor Related Query @done(18-07-02 12:43)
+    ✔ Lihat semua detail sensor device_id di suatu company @done(18-07-02 12:42)
+        select *
+        from kaspa.sensor_data_by_company
+        where company = "nama company"
+    ✔ Lihat detail sensor per device id @done(18-07-02 12:42)
+        select *
+        from kaspa.sensor_data_by_device_id
+        where device_id = "nama sensor"
+    
 
-☐ Event count
-    ☐ Menampilkan event hit untuk semua sensor di semua perusahaan (admin)
-        select * from 
-    ☐ Menampilkan event hit untuk per semua sensor di satu perusahan (user/perusahaan)
-        Per detik
-        Per menit
-        Per jam
-        per hari
-        per bulan
-        per tahun
+✔ User Related Query @done(18-07-02 13:56)
+    ✔ Lihat detail user berdasarkan username @done(18-07-02 13:56)
+        select *
+        from kaspa.user_by_username
+        where username = "username"
+    ✔ Lihat detail user berdasarkan nama company @done(18-07-02 13:56)
+        select *
+        from kaspa.user_by_company
+        where company = "nama company"
+    ✔ Lihat list user yang ada pada satu kategori @done(18-07-02 13:56)
+        select *
+        from kaspa.list_user_by_group
+        where group = "nama group"
+
+✔ Event count @done(18-07-02 22:49)
+    ✔ Menampilkan event hit untuk semua sensor di semua perusahaan (admin) @done(18-07-02 22:49)
+        ✔ second @done(18-07-02 22:49)
+        select * from kaspa.event_hit_per_company_sec
+        ✔ minute @done(18-07-02 22:50)
+        select * from kaspa.event_hit_per_company_minute
+        ✔ hour @done(18-07-02 22:50)
+        select * from kaspa.event_hit_per_company_hour
+        ✔ day @done(18-07-02 22:50)
+        select * from kaspa.event_hit_per_company_day
+        ✔ month @done(18-07-02 22:50)
+        select * from kaspa.event_hit_per_company_month
+        ✔ year @done(18-07-02 22:50)
+        select * from kaspa.event_hit_per_company_year
+
+    ✔ Menampilkan event hit untuk per semua sensor di satu perusahan (user/perusahaan) @done(18-07-02 22:49)
+        ✔ second @done(18-07-02 22:50)
+        select * from kaspa.event_hit_per_device_id_sec
+        ✔ minute @done(18-07-02 22:50)
+        select * from kaspa.event_hit_per_device_id_minute
+        ✔ hour @done(18-07-02 22:50)
+        select * from kaspa.event_hit_per_device_id_hour
+        ✔ day @done(18-07-02 22:50)
+        select * from kaspa.event_hit_per_device_id_day
+        ✔ month @done(18-07-02 22:50)
+        select * from kaspa.event_hit_per_device_id_month
+        ✔ year @done(18-07-02 22:50)
+        select * from kaspa.event_hit_per_device_id_year
+
 
 Sensor statistic
     Menampilkan metric semua sensor (admin)

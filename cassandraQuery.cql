@@ -4,7 +4,7 @@ CREATE KEYSPACE kaspa WITH replication = {'class': 'SimpleStrategy', 'replicatio
 USE kaspa;
 
 CREATE TABLE kaspa.raw_data(
-    id UUID,            --uuid for reason
+    company text,       --Company that own the sensor
     device_id text,     --Device ID of corresponding sensor
     year int,           --Year Collected
     month int,          --Month Collected
@@ -27,7 +27,7 @@ CREATE TABLE kaspa.raw_data(
     sig_gen int,        --Generated signature of alert
     sig_rev int,        --signature revision number
     src_country text,        --Source country of coresponding alert
-    PRIMARY KEY ((device_id), year, month, day, hour, minute, second)       
+    PRIMARY KEY ((company, device_id), year, month, day, hour, minute, second)       
 ) WITH CLUSTERING ORDER BY (year DESC, month DESC, day DESC, hour DESC);
 
 CREATE TABLE kaspa.sensor_device(
@@ -50,6 +50,7 @@ CREATE TABLE kaspa.user(
     password_hash text, --Hashed Password
     api_key text,       --Account API Key
     token text          --Account access token
+    group text,
 );
 
 --SIGNATURE AGGREGATE

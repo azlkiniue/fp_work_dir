@@ -12,7 +12,7 @@
 
 [Sensor Management Related Task]
 - Enrich the environment variable with topic-for-command variable
-    ✔ command_mqtt_topic @done(18-06-23 20:01)
+    ✔ command_mqtt_topic @done(18-07-02 11:43)
     ✔ response_mqtt_topic @done(18-06-23 20:01)
     ✔ global_mqtt_topic @done(18-06-23 20:01)
     ✔ management_mqtt_server + port @done(18-06-23 20:01)
@@ -50,7 +50,7 @@
     ☐ each messages always carries access_token
     ☐ each message encrypted with secret_key
     ☐ each message also can be decrypted with secret_key
-    ☐ command_mqtt_topic
+    ✔ command_mqtt_topic @done(18-07-02 11:43)
         ☐ published by management sensor API
         ☐ subscribed by each sensor for it's respective topic
         ☐ each sensor has unique topic

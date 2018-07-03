@@ -72,20 +72,20 @@ Sensor statistic
         ✔ Event hit @done(18-07-02 23:13)
             select * 
             from kaspa.event_hit_per_company_sec
-        Signature hit / Alert message hit
+        ✔ Signature hit / Alert message hit @done(18-07-03 16:50)
         Protocol Hit
             Source port
             Destination port
     Menampilkan metric semua perusahaan (admin)
         ✔ Event hit @done(18-07-02 23:13)
             select *
-        Signature hit / Alert message hit
+        ✔ Signature hit / Alert message hit @done(18-07-03 16:50)
         Protocol Hit
             Source port
             Destination port
     Menampilkan metric untuk per semua sensor di satu perusahaan (user)
         ✔ Event hit @done(18-07-02 23:13)
-        Signature hit / Alert message hit
+        ✔ Signature hit / Alert message hit @done(18-07-03 16:51)
         Protocol Hit
             Source port
             Destination port

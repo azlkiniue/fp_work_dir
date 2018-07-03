@@ -31,9 +31,15 @@ CREATE TABLE kaspa.sensor_by_device_id(
 # PUSH RAW DATA TABLE
 
 CREATE TABLE kaspa.raw_data_by_device_id(
-    time_uuid timeuuid,
+    id uuid,
     company text,
     device_id text,
+    year int,
+    month int,
+    day int,
+    hour int,
+    minute int,
+    second int,
     protocol text,
     ip_type text,
     src_mac text,
@@ -49,13 +55,19 @@ CREATE TABLE kaspa.raw_data_by_device_id(
     sig_gen int,
     sig_rev int,
     src_country text,
-    PRIMARY KEY ((device_id), time_uuid)
-) WITH CLUSTERING ORDER BY (time_uuid DESC)
+    PRIMARY KEY ((device_id), id, year, month, day, hour, minute, second)
+) WITH CLUSTERING ORDER BY (year DESC, month DESC, day DESC, hour DESC, minute DESC, second DESC)
 
 CREATE TABLE kaspa.raw_data_by_company(
-    time_uuid timeuuid,
+    id uuid,
     company text,
     device_id text,
+    year int,
+    month int,
+    day int,
+    hour int,
+    minute int,
+    second int,
     protocol text,
     ip_type text,
     src_mac text,
@@ -71,8 +83,8 @@ CREATE TABLE kaspa.raw_data_by_company(
     sig_gen int,
     sig_rev int,
     src_country text,
-    PRIMARY KEY ((company), device_id, time_uuid)
-) WITH CLUSTERING ORDER BY (device_id ASC, time_uuid DESC)
+    PRIMARY KEY ((company), device_id, id, year, month, day, hour, minute, second)
+) WITH CLUSTERING ORDER BY (device_id ASC, year DESC, month DESC, day DESC, hour DESC, minute DESC, second DESC)
 
 # USER RELATED TABLE
 

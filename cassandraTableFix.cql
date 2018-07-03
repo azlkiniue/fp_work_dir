@@ -109,10 +109,66 @@ CREATE TABLE kaspa.list_user_by_group(
     PRIMARY KEY (group, username)
 ) WITH CLUSTERING ORDER BY (username ASC)
 
-# EVENT COUNT AGGREGATE
+# EVENT HIT COUNT AGGREGATE
 
-CREATE TABLE kaspa.event_hit_per_company_sec(
+CREATE TABLE kaspa.event_hit_on_company_sec(
     company text,
+    year int,
+    month int,
+    day int,
+    hour int,
+    minute int,
+    second int,
+    value counter, #Hit suatu company per detik
+    PRIMARY KEY ((company), year, month, day, hour, minute, second)
+) WITH CLUSTERING ORDER BY (year DESC, month DESC, day DESC, hour DESC, minute DESC, second DESC)
+
+CREATE TABLE kaspa.event_hit_on_company_minute(
+    company text,
+    year int,
+    month int,
+    day int,
+    hour int,
+    minute int,
+    value counter, #Hit suatu company per menit
+    PRIMARY KEY ((company), year, month, day, hour, minute)
+) WITH CLUSTERING ORDER BY (year DESC, month DESC, day DESC, hour DESC, minute DESC)
+
+CREATE TABLE kaspa.event_hit_on_company_hour(
+    company text,
+    year int,
+    month int,
+    day int,
+    hour int,
+    value counter, #Hit suatu company per menit
+    PRIMARY KEY ((company), year, month, day, hour)
+) WITH CLUSTERING ORDER BY (year DESC, month DESC, day DESC, hour DESC)
+
+CREATE TABLE kaspa.event_hit_on_company_day(
+    company text,
+    year int,
+    month int,
+    day int,
+    value counter, #Hit suatu company per menit
+    PRIMARY KEY ((company), year, month, day)
+) WITH CLUSTERING ORDER BY (year DESC, month DESC, day DESC)
+
+CREATE TABLE kaspa.event_hit_on_company_month(
+    company text,
+    year int,
+    month int,
+    value counter, #Hit suatu company per menit
+    PRIMARY KEY ((company), year, month)
+) WITH CLUSTERING ORDER BY (year DESC, month DESC)
+
+CREATE TABLE kaspa.event_hit_on_company_year(
+    company text,
+    year int,
+    value counter, #Hit suatu company per menit
+    PRIMARY KEY ((company), year)
+) WITH CLUSTERING ORDER BY (year DESC)
+
+CREATE TABLE kaspa.event_hit_on_device_id_sec(
     device_id text,
     year int,
     month int,
@@ -121,11 +177,10 @@ CREATE TABLE kaspa.event_hit_per_company_sec(
     minute int,
     second int,
     value counter,
-    PRIMARY KEY ((company), device_id, year, month, day, hour, minute, second)
+    PRIMARY KEY ((device_id), year, month, day, hour, minute, second)
 ) WITH CLUSTERING ORDER BY (device_id ASC, year DESC, month DESC, day DESC, hour DESC, minute DESC, second DESC)
 
-CREATE TABLE kaspa.event_hit_per_company_minute(
-    company text,
+CREATE TABLE kaspa.event_hit_on_device_id_minute(
     device_id text,
     year int,
     month int,
@@ -133,106 +188,169 @@ CREATE TABLE kaspa.event_hit_per_company_minute(
     hour int,
     minute int,
     value counter,
-    PRIMARY KEY ((company), device_id, year, month, day, hour, minute)
+    PRIMARY KEY ((device_id), year, month, day, hour, minute)
 ) WITH CLUSTERING ORDER BY (device_id ASC, year DESC, month DESC, day DESC, hour DESC, minute DESC)
 
-CREATE TABLE kaspa.event_hit_per_company_hour(
-    company text,
+CREATE TABLE kaspa.event_hit_on_device_id_hour(
     device_id text,
     year int,
     month int,
     day int,
     hour int,
     value counter,
-    PRIMARY KEY ((company), device_id, year, month, day, hour)
+    PRIMARY KEY ((device_id), year, month, day, hour)
 ) WITH CLUSTERING ORDER BY (device_id ASC, year DESC, month DESC, day DESC, hour DESC)
 
-CREATE TABLE kaspa.event_hit_per_company_day(
-    company text,
+CREATE TABLE kaspa.event_hit_on_device_id_day(
     device_id text,
     year int,
     month int,
     day int,
     value counter,
-    PRIMARY KEY ((company), device_id, year, month, day)
+    PRIMARY KEY ((device_id), year, month, day)
 ) WITH CLUSTERING ORDER BY (device_id ASC, year DESC, month DESC, day DESC)
 
-CREATE TABLE kaspa.event_hit_per_company_month(
-    company text,
+CREATE TABLE kaspa.event_hit_on_device_id_month(
     device_id text,
     year int,
     month int,
     value counter,
-    PRIMARY KEY ((company), device_id, year, month)
+    PRIMARY KEY ((device_id), year, month)
 ) WITH CLUSTERING ORDER BY (device_id ASC, year DESC, month DESC)
 
-CREATE TABLE kaspa.event_hit_per_company_year(
-    company text,
+CREATE TABLE kaspa.event_hit_on_device_id_year(
     device_id text,
     year int,
     value counter,
-    PRIMARY KEY ((company), device_id, year)
+    PRIMARY KEY ((device_id), year)
 ) WITH CLUSTERING ORDER BY (device_id ASC, year DESC)
 
-CREATE TABLE kaspa.event_hit_per_device_id_sec(
+# SIGNATURE HIT COUNT AGGREGATE
+
+CREATE TABLE kaspa.sign_hit_on_company_second(
     company text,
-    device_id text,
+    key text,
+    value counter,
     year int,
     month int,
     day int,
     hour int,
     minute int,
     second int,
-    value counter,
-    PRIMARY KEY ((device_id), company, year, month, day, hour, minute, second)
-) WITH CLUSTERING ORDER BY (company ASC, year DESC, month DESC, day DESC, hour DESC, minute DESC, second DESC)
+    PRIMARY KEY ((company), key, year, month, day, hour, minute, second)
+) WITH CLUSTERING ORDER BY (key ASC, year DESC, month DESC, day DESC, hour DESC, minute DESC, second DESC)
 
-CREATE TABLE kaspa.event_hit_per_device_id_minute(
+CREATE TABLE kaspa.sign_hit_on_company_minute(
     company text,
-    device_id text,
+    key text,
+    value counter,
     year int,
     month int,
     day int,
     hour int,
     minute int,
-    value counter,
-    PRIMARY KEY ((device_id), company, year, month, day, hour, minute)
-) WITH CLUSTERING ORDER BY (company ASC, year DESC, month DESC, day DESC, hour DESC, minute DESC)
+    PRIMARY KEY ((company), key, year, month, day, hour, minute)
+) WITH CLUSTERING ORDER BY (key ASC, year DESC, month DESC, day DESC, hour DESC, minute DESC)
 
-CREATE TABLE kaspa.event_hit_per_device_id_hour(
+CREATE TABLE kaspa.sign_hit_on_company_hour(
     company text,
-    device_id text,
+    key text,
+    value counter,
     year int,
     month int,
     day int,
     hour int,
-    value counter,
-    PRIMARY KEY ((device_id), company, year, month, day, hour)
-) WITH CLUSTERING ORDER BY (company ASC, year DESC, month DESC, day DESC, hour DESC)
+    PRIMARY KEY ((company), key, year, month, day, hour)
+) WITH CLUSTERING ORDER BY (key ASC, year DESC, month DESC, day DESC, hour DESC)
 
-CREATE TABLE kaspa.event_hit_per_device_id_day(
+CREATE TABLE kaspa.sign_hit_on_company_day(
     company text,
-    device_id text,
+    key text,
+    value counter,
     year int,
     month int,
     day int,
-    value counter,
-    PRIMARY KEY ((device_id), company, year, month, day)
-) WITH CLUSTERING ORDER BY (company ASC, year DESC, month DESC, day DESC)
+    PRIMARY KEY ((company), key, year, month, day)
+) WITH CLUSTERING ORDER BY (key ASC, year DESC, month DESC, day DESC)
 
-CREATE TABLE kaspa.event_hit_per_device_id_month(
+CREATE TABLE kaspa.sign_hit_on_company_month(
     company text,
-    device_id text,
+    key text,
+    value counter,
     year int,
     month int,
-    value counter,
-    PRIMARY KEY ((device_id), company, year, month)
-) WITH CLUSTERING ORDER BY (company ASC, year DESC, month DESC)
+    PRIMARY KEY ((company), key, year, month)
+) WITH CLUSTERING ORDER BY (key ASC, year DESC, month DESC)
 
-CREATE TABLE kaspa.event_hit_per_device_id_month(
+CREATE TABLE kaspa.sign_hit_on_company_year(
     company text,
-    device_id text,
-    year int,
+    key text,
     value counter,
-    PRIMARY KEY ((device_id), company, year)
-) WITH CLUSTERING ORDER BY (company ASC, year DESC)
+    year int,
+    month int,
+    day int,
+    PRIMARY KEY ((company), key, year)
+) WITH CLUSTERING ORDER BY (key ASC, year DESC)
+
+CREATE TABLE kaspa.sign_hit_on_device_id_second(
+    device_id text,
+    key text,
+    value counter,
+    year int,
+    month int,
+    day int,
+    hour int,
+    minute int,
+    second int,
+    PRIMARY KEY ((device_id), key, year, month, day, hour, minute, second)
+) WITH CLUSTERING ORDER BY (key ASC, year DESC, month DESC, day DESC, hour DESC, minute DESC, second DESC)
+
+CREATE TABLE kaspa.sign_hit_on_device_id_minute(
+    device_id text,
+    key text,
+    value counter,
+    year int,
+    month int,
+    day int,
+    hour int,
+    minute int,
+    PRIMARY KEY ((device_id), key, year, month, day, hour, minute)
+) WITH CLUSTERING ORDER BY (key ASC, year DESC, month DESC, day DESC, hour DESC, minute DESC)
+
+CREATE TABLE kaspa.sign_hit_on_device_id_hour(
+    device_id text,
+    key text,
+    value counter,
+    year int,
+    month int,
+    day int,
+    hour int,
+    PRIMARY KEY ((device_id), key, year, month, day, hour)
+) WITH CLUSTERING ORDER BY (key ASC, year DESC, month DESC, day DESC, hour DESC)
+
+CREATE TABLE kaspa.sign_hit_on_device_id_day(
+    device_id text,
+    key text,
+    value counter,
+    year int,
+    month int,
+    day int,
+    PRIMARY KEY ((device_id), key, year, month, day)
+) WITH CLUSTERING ORDER BY (key ASC, year DESC, month DESC, day DESC)
+
+CREATE TABLE kaspa.sign_hit_on_device_id_month(
+    device_id text,
+    key text,
+    value counter,
+    year int,
+    month int,
+    PRIMARY KEY ((device_id), key, year, month)
+) WITH CLUSTERING ORDER BY (key ASC, year DESC, month DESC)
+
+CREATE TABLE kaspa.sign_hit_on_device_id_year(
+    device_id text,
+    key text,
+    value counter,
+    year int,
+    PRIMARY KEY ((device_id), key, year)
+) WITH CLUSTERING ORDER BY (key ASC, year DESC)

@@ -3,145 +3,166 @@ CREATE KEYSPACE kaspa WITH replication = {'class': 'SimpleStrategy', 'replicatio
 
 USE kaspa;
 
-DROP TABLE IF EXISTS kaspa.sensor_by_company
-DROP TABLE IF EXISTS kaspa.sensor_by_device_id
+DROP TABLE IF EXISTS kaspa.sensor
+DROP TABLE IF EXISTS kaspa.user
 
 DROP TABLE IF EXISTS kaspa.raw_data_by_device_id
 DROP TABLE IF EXISTS kaspa.raw_data_by_company
-
-DROP TABLE IF EXISTS kaspa.user_by_username
-DROP TABLE IF EXISTS kaspa.user_by_company
-DROP TABLE IF EXISTS kaspa.list_user_by_group
 
 DROP TABLE IF EXISTS kaspa.event_hit_on_company_sec
 DROP TABLE IF EXISTS kaspa.event_hit_on_company_minute
 DROP TABLE IF EXISTS kaspa.event_hit_on_company_hour
 DROP TABLE IF EXISTS kaspa.event_hit_on_company_day
+DROP TABLE IF EXISTS kaspa.event_hit_on_company_month
+DROP TABLE IF EXISTS kaspa.event_hit_on_company_year
 
 DROP TABLE IF EXISTS kaspa.event_hit_on_device_id_sec
 DROP TABLE IF EXISTS kaspa.event_hit_on_device_id_min
 DROP TABLE IF EXISTS kaspa.event_hit_on_device_id_hour
 DROP TABLE IF EXISTS kaspa.event_hit_on_device_id_day
+DROP TABLE IF EXISTS kaspa.event_hit_on_device_id_month
+DROP TABLE IF EXISTS kaspa.event_hit_on_device_id_year
 
 DROP TABLE IF EXISTS kaspa.signature_hit_on_company_sec
 DROP TABLE IF EXISTS kaspa.signature_hit_on_company_minute
 DROP TABLE IF EXISTS kaspa.signature_hit_on_company_hour
 DROP TABLE IF EXISTS kaspa.signature_hit_on_company_day
+DROP TABLE IF EXISTS kaspa.signature_hit_on_company_month
+DROP TABLE IF EXISTS kaspa.signature_hit_on_company_year
 
 DROP TABLE IF EXISTS kaspa.signature_hit_on_device_id_sec
 DROP TABLE IF EXISTS kaspa.signature_hit_on_device_id_minute
 DROP TABLE IF EXISTS kaspa.signature_hit_on_device_id_hour
 DROP TABLE IF EXISTS kaspa.signature_hit_on_device_id_day
+DROP TABLE IF EXISTS kaspa.signature_hit_on_device_id_month
+DROP TABLE IF EXISTS kaspa.signature_hit_on_device_id_year
 
-DROP TABLE IF EXISTS kaspa.protocol_hit_on_company_second
+DROP TABLE IF EXISTS kaspa.protocol_hit_on_company_sec
 DROP TABLE IF EXISTS kaspa.protocol_hit_on_company_minute
 DROP TABLE IF EXISTS kaspa.protocol_hit_on_company_hour
 DROP TABLE IF EXISTS kaspa.protocol_hit_on_company_day
+DROP TABLE IF EXISTS kaspa.protocol_hit_on_company_month
+DROP TABLE IF EXISTS kaspa.protocol_hit_on_company_year
 
-DROP TABLE IF EXISTS kaspa.protocol_hit_on_device_id_second
+DROP TABLE IF EXISTS kaspa.protocol_hit_on_device_id_sec
 DROP TABLE IF EXISTS kaspa.protocol_hit_on_device_id_minute
 DROP TABLE IF EXISTS kaspa.protocol_hit_on_device_id_hour
 DROP TABLE IF EXISTS kaspa.protocol_hit_on_device_id_day
+DROP TABLE IF EXISTS kaspa.protocol_hit_on_device_id_month
+DROP TABLE IF EXISTS kaspa.protocol_hit_on_device_id_year
 
-DROP TABLE IF EXISTS kaspa.protocol_by_sport_hit_on_company_second
+DROP TABLE IF EXISTS kaspa.protocol_by_sport_hit_on_company_sec
 DROP TABLE IF EXISTS kaspa.protocol_by_sport_hit_on_company_minute
 DROP TABLE IF EXISTS kaspa.protocol_by_sport_hit_on_company_hour
 DROP TABLE IF EXISTS kaspa.protocol_by_sport_hit_on_company_day
+DROP TABLE IF EXISTS kaspa.protocol_by_sport_hit_on_company_month
+DROP TABLE IF EXISTS kaspa.protocol_by_sport_hit_on_company_year
 
 DROP TABLE IF EXISTS kaspa.protocol_by_dport_hit_on_company_second
 DROP TABLE IF EXISTS kaspa.protocol_by_dport_hit_on_company_minute
 DROP TABLE IF EXISTS kaspa.protocol_by_dport_hit_on_company_hour
 DROP TABLE IF EXISTS kaspa.protocol_by_dport_hit_on_company_day
+DROP TABLE IF EXISTS kaspa.protocol_by_dport_hit_on_company_month
+DROP TABLE IF EXISTS kaspa.protocol_by_dport_hit_on_company_year
 
-DROP TABLE IF EXISTS kaspa.protocol_by_sport_hit_on_device_id_second
+DROP TABLE IF EXISTS kaspa.protocol_by_sport_hit_on_device_id_sec
 DROP TABLE IF EXISTS kaspa.protocol_by_sport_hit_on_device_id_minute
 DROP TABLE IF EXISTS kaspa.protocol_by_sport_hit_on_device_id_hour
 DROP TABLE IF EXISTS kaspa.protocol_by_sport_hit_on_device_id_day
+DROP TABLE IF EXISTS kaspa.protocol_by_sport_hit_on_device_id_month
+DROP TABLE IF EXISTS kaspa.protocol_by_sport_hit_on_device_id_year
 
 DROP TABLE IF EXISTS kaspa.protocol_by_dport_hit_on_device_id_second
 DROP TABLE IF EXISTS kaspa.protocol_by_dport_hit_on_device_id_minute
 DROP TABLE IF EXISTS kaspa.protocol_by_dport_hit_on_device_id_hour
 DROP TABLE IF EXISTS kaspa.protocol_by_dport_hit_on_device_id_day
+DROP TABLE IF EXISTS kaspa.protocol_by_dport_hit_on_device_id_month
+DROP TABLE IF EXISTS kaspa.protocol_by_dport_hit_on_device_id_year
 
 DROP TABLE IF EXISTS kaspa.ip_source_hit_on_company_sec
 DROP TABLE IF EXISTS kaspa.ip_source_hit_on_company_minute
 DROP TABLE IF EXISTS kaspa.ip_source_hit_on_company_hour
 DROP TABLE IF EXISTS kaspa.ip_source_hit_on_company_day
+DROP TABLE IF EXISTS kaspa.ip_source_hit_on_company_month
+DROP TABLE IF EXISTS kaspa.ip_source_hit_on_company_year
 
 DROP TABLE IF EXISTS kaspa.ip_dest_hit_on_company_sec
 DROP TABLE IF EXISTS kaspa.ip_dest_hit_on_company_minute
 DROP TABLE IF EXISTS kaspa.ip_dest_hit_on_company_hour
 DROP TABLE IF EXISTS kaspa.ip_dest_hit_on_company_day
+DROP TABLE IF EXISTS kaspa.ip_dest_hit_on_company_month
+DROP TABLE IF EXISTS kaspa.ip_dest_hit_on_company_year
 
 DROP TABLE IF EXISTS kaspa.ip_source_hit_on_device_id_sec
 DROP TABLE IF EXISTS kaspa.ip_source_hit_on_device_id_minute
 DROP TABLE IF EXISTS kaspa.ip_source_hit_on_device_id_hour
 DROP TABLE IF EXISTS kaspa.ip_source_hit_on_device_id_day
+DROP TABLE IF EXISTS kaspa.ip_source_hit_on_device_id_month
+DROP TABLE IF EXISTS kaspa.ip_source_hit_on_device_id_year
 
 DROP TABLE IF EXISTS kaspa.ip_dest_hit_on_device_id_sec
 DROP TABLE IF EXISTS kaspa.ip_dest_hit_on_device_id_minute
 DROP TABLE IF EXISTS kaspa.ip_dest_hit_on_device_id_hour
 DROP TABLE IF EXISTS kaspa.ip_dest_hit_on_device_id_day
+DROP TABLE IF EXISTS kaspa.ip_dest_hit_on_device_id_month
+DROP TABLE IF EXISTS kaspa.ip_dest_hit_on_device_id_year
 
 DROP TABLE IF EXISTS kaspa.country_source_hit_on_company_second
 DROP TABLE IF EXISTS kaspa.country_source_hit_on_company_minute
 DROP TABLE IF EXISTS kaspa.country_source_hit_on_company_hour
 DROP TABLE IF EXISTS kaspa.country_source_hit_on_company_day
+DROP TABLE IF EXISTS kaspa.country_source_hit_on_company_month
+DROP TABLE IF EXISTS kaspa.country_source_hit_on_company_year
 
 DROP TABLE IF EXISTS kaspa.country_dest_hit_on_company_second
 DROP TABLE IF EXISTS kaspa.country_dest_hit_on_company_minute
 DROP TABLE IF EXISTS kaspa.country_dest_hit_on_company_hour
 DROP TABLE IF EXISTS kaspa.country_dest_hit_on_company_day
+DROP TABLE IF EXISTS kaspa.country_dest_hit_on_company_month
+DROP TABLE IF EXISTS kaspa.country_dest_hit_on_company_year
 
 DROP TABLE IF EXISTS kaspa.country_source_hit_on_device_id_second
 DROP TABLE IF EXISTS kaspa.country_source_hit_on_device_id_minute
 DROP TABLE IF EXISTS kaspa.country_source_hit_on_device_id_hour
 DROP TABLE IF EXISTS kaspa.country_source_hit_on_device_id_day
+DROP TABLE IF EXISTS kaspa.country_source_hit_on_device_id_month
+DROP TABLE IF EXISTS kaspa.country_source_hit_on_device_id_year
 
 DROP TABLE IF EXISTS kaspa.country_dest_hit_on_device_id_second
 DROP TABLE IF EXISTS kaspa.country_dest_hit_on_device_id_minute
 DROP TABLE IF EXISTS kaspa.country_dest_hit_on_device_id_hour
 DROP TABLE IF EXISTS kaspa.country_dest_hit_on_device_id_day
+DROP TABLE IF EXISTS kaspa.country_dest_hit_on_device_id_month
+DROP TABLE IF EXISTS kaspa.country_dest_hit_on_device_id_year
 
-
-
-
-
-
-
-
-
-CREATE TABLE kaspa.sensor_by_company(
+CREATE TABLE kaspa.sensor(
     company text,
     device_id text,
+    device_name text,
+    external_subnet text,
     hostname text,
     ip_address text,
-    netint text,
     location text,
-    topic_global text,
-    topic_cmd text,
-    topic_resp text,
+    oinkcode text,
+    protected_subnet text,
+    sensor_key uuid,
     time_created timestamp,
+    topic_cmd text,
+    topic_global text,
+    topic_resp text,
     PRIMARY KEY (company, device_id)
 ) WITH CLUSTERING ORDER BY (device_id ASC);
 
-CREATE TABLE kaspa.sensor_by_device_id(
+CREATE TABLE kaspa.user(
+    username text,
     company text,
-    device_id text,
-    hostname text,
-    ip_address text,
-    netint text,
-    location text,
-    topic_global text,
-    topic_cmd text,
-    topic_resp text,
-    time_created timestamp,
-    PRIMARY KEY (device_id, company)
-) WITH CLUSTERING ORDER BY (company ASC);
-
-
-
-
+    email text,
+    first_name text,
+    last_name text,
+    group text,
+    password_hash text,
+    time_joined timestamp
+)
 
 CREATE TABLE kaspa.raw_data_by_device_id(
     id uuid,
@@ -202,46 +223,6 @@ CREATE TABLE kaspa.raw_data_by_company(
 ) WITH CLUSTERING ORDER BY (device_id ASC, year DESC, month DESC, day DESC, hour DESC, minute DESC, second DESC);
 
 
-
-
-
-CREATE TABLE kaspa.user_by_username(
-    username text,
-    email text,
-    password_hash text,
-    api_key text,
-    token text,
-    group text,
-    time_joined timestamp,
-    PRIMARY KEY (username)
-);
-
-CREATE TABLE kaspa.user_by_company(
-    username text,
-    email text,
-    password_hash text,
-    api_key text,
-    token text,
-    group text,
-    time_joined timestamp,
-    PRIMARY KEY (company)
-);
-
-CREATE TABLE kaspa.list_user_by_group(
-    username text,
-    email text,
-    password_hash text,
-    api_key text,
-    token text,
-    group text,
-    time_joined timestamp,
-    PRIMARY KEY (group, username)
-) WITH CLUSTERING ORDER BY (username ASC);
-
-
-
-
-
 CREATE TABLE kaspa.event_hit_on_company_sec(
     company text,
     year int,
@@ -284,6 +265,20 @@ CREATE TABLE kaspa.event_hit_on_company_day(
     PRIMARY KEY ((company), year, month, day)
 ) WITH CLUSTERING ORDER BY (year DESC, month DESC, day DESC);
 
+CREATE TABLE kaspa.event_hit_on_company_month(
+    company text,
+    year int,
+    month int,
+    value bigint,
+    PRIMARY KEY ((company), year, month)
+) WITH CLUSTERING ORDER BY (year DESC, month DESC);
+
+CREATE TABLE kaspa.event_hit_on_company_year(
+    company text,
+    year int,
+    value bigint,
+    PRIMARY KEY ((company), year)
+) WITH CLUSTERING ORDER BY (year DESC);
 
 
 CREATE TABLE kaspa.event_hit_on_device_id_sec(
@@ -328,6 +323,20 @@ CREATE TABLE kaspa.event_hit_on_device_id_day(
     PRIMARY KEY ((device_id), year, month, day)
 ) WITH CLUSTERING ORDER BY (year DESC, month DESC, day DESC);
 
+CREATE TABLE kaspa.event_hit_on_device_id_month(
+    device_id text,
+    year int,
+    month int,
+    value bigint,
+    PRIMARY KEY ((device_id), year, month)
+) WITH CLUSTERING ORDER BY (year DESC, month DESC);
+
+CREATE TABLE kaspa.event_hit_on_device_id_year(
+    device_id text,
+    year int,
+    value bigint,
+    PRIMARY KEY ((device_id), year)
+) WITH CLUSTERING ORDER BY (year DESC);
 
 
 CREATE TABLE kaspa.signature_hit_on_company_sec(
@@ -376,6 +385,22 @@ CREATE TABLE kaspa.signature_hit_on_company_day(
     PRIMARY KEY ((company), year, month, day, alert_msg)
 ) WITH CLUSTERING ORDER BY (year DESC, month DESC, day DESC, alert_msg ASC);
 
+CREATE TABLE kaspa.signature_hit_on_company_month(
+    company text,
+    alert_msg text,
+    value bigint,
+    year int,
+    month int,
+    PRIMARY KEY ((company), year, month, alert_msg)
+) WITH CLUSTERING ORDER BY (year DESC, month DESC, alert_msg ASC);
+
+CREATE TABLE kaspa.signature_hit_on_company_year(
+    company text,
+    alert_msg text,
+    value bigint,
+    year int,
+    PRIMARY KEY ((company), year, alert_msg)
+) WITH CLUSTERING ORDER BY (year DESC, alert_msg ASC);
 
 
 CREATE TABLE kaspa.signature_hit_on_device_id_sec(
@@ -424,11 +449,25 @@ CREATE TABLE kaspa.signature_hit_on_device_id_day(
     PRIMARY KEY ((device_id), year, month, day, alert_msg)
 ) WITH CLUSTERING ORDER BY (year DESC, month DESC, day DESC, alert_msg ASC);
 
+CREATE TABLE kaspa.signature_hit_on_device_id_month(
+    device_id text,
+    alert_msg text,
+    value bigint,
+    year int,
+    month int,
+    PRIMARY KEY ((device_id), year, month, alert_msg)
+) WITH CLUSTERING ORDER BY (year DESC, month DESC, alert_msg ASC);
+
+CREATE TABLE kaspa.signature_hit_on_device_id_year(
+    device_id text,
+    alert_msg text,
+    value bigint,
+    year int,
+    PRIMARY KEY ((device_id), year, alert_msg)
+) WITH CLUSTERING ORDER BY (year DESC, alert_msg ASC);
 
 
-
-
-CREATE TABLE kaspa.protocol_hit_on_company_second(
+CREATE TABLE kaspa.protocol_hit_on_company_sec(
     company text,
     protocol text,
     value bigint,
@@ -471,11 +510,25 @@ CREATE TABLE kaspa.protocol_hit_on_company_day(
     year int,
     month int,
     day int,
-    PRIMARY KEY ((company), year, month, day)
-) WITH CLUSTERING ORDER BY (year DESC, month DESC, day DESC, key ASC);
+    PRIMARY KEY ((company), year, month, day, protocol)
+) WITH CLUSTERING ORDER BY (year DESC, month DESC, day DESC, protocol ASC);
 
+CREATE TABLE kaspa.protocol_hit_on_company_month(
+    company text,
+    protocol text,
+    value bigint,
+    year int,
+    month int,
+    PRIMARY KEY ((company), year, month, protocol)
+) WITH CLUSTERING ORDER BY (year DESC, month DESC, protocol ASC);
 
-
+CREATE TABLE kaspa.protocol_hit_on_company_year(
+    company text,
+    protocol text,
+    value bigint,
+    year int,
+    PRIMARY KEY ((company), year, protocol)
+) WITH CLUSTERING ORDER BY (year DESC, protocol ASC);
 
 
 CREATE TABLE kaspa.protocol_hit_on_device_id_second(
@@ -488,7 +541,7 @@ CREATE TABLE kaspa.protocol_hit_on_device_id_second(
     hour int,
     minute int,
     second int,
-    PRIMARY KEY((company), year, month, day, hour, minute, second, protocol)
+    PRIMARY KEY((device_id), year, month, day, hour, minute, second, protocol)
 ) WITH CLUSTERING ORDER BY (year DESC, month DESC, day DESC, hour DESC, minute DESC, second DESC, protocol ASC);
 
 CREATE TABLE kaspa.protocol_hit_on_device_id_minute(
@@ -500,7 +553,7 @@ CREATE TABLE kaspa.protocol_hit_on_device_id_minute(
     day int,
     hour int,
     minute int,
-    PRIMARY KEY ((company), year, month, day, hour, minute, second, protocol)
+    PRIMARY KEY ((device_id), year, month, day, hour, minute, second, protocol)
 ) WITH CLUSTERING ORDER BY (year DESC, month DESC, day DESC, hour DESC, minute DESC, protocol ASC);
 
 CREATE TABLE kaspa.protocol_hit_on_device_id_hour(
@@ -511,7 +564,7 @@ CREATE TABLE kaspa.protocol_hit_on_device_id_hour(
     month int,
     day int,
     hour int,
-    PRIMARY KEY ((company), year, month, day, hour, protocol)
+    PRIMARY KEY ((device_id), year, month, day, hour, protocol)
 ) WITH CLUSTERING ORDER BY (key ASC, year DESC, month DESC, day DESC, hour DESC, protocol ASC);
 
 CREATE TABLE kaspa.protocol_hit_on_device_id_day(
@@ -521,13 +574,29 @@ CREATE TABLE kaspa.protocol_hit_on_device_id_day(
     year int,
     month int,
     day int,
-    PRIMARY KEY ((company), year, month, day, protocol)
+    PRIMARY KEY ((device_id), year, month, day, protocol)
 ) WITH CLUSTERING ORDER BY (year DESC, month DESC, day DESC, protocol ASC);
 
+CREATE TABLE kaspa.protocol_hit_on_device_id_month(
+    device_id text,
+    protocol text,
+    value bigint,
+    year int,
+    month int,
+    PRIMARY KEY ((device_id), year, month, protocol)
+) WITH CLUSTERING ORDER BY (year DESC, month DESC, protocol ASC);
+
+CREATE TABLE kaspa.protocol_hit_on_device_id_year(
+    device_id text,
+    protocol text,
+    value bigint,
+    year int,
+    PRIMARY KEY ((device_id), year, protocol)
+) WITH CLUSTERING ORDER BY (year DESC, protocol ASC);
 
 
 
-CREATE TABLE kaspa.protocol_by_sport_hit_on_company_second(
+CREATE TABLE kaspa.protocol_by_sport_hit_on_company_sec(
     company text,
     protocol text,
     src_port text,
@@ -537,7 +606,7 @@ CREATE TABLE kaspa.protocol_by_sport_hit_on_company_second(
     day int,
     hour int,
     minute int,
-    second int,
+    sec int,
     PRIMARY KEY ((company, protocol),year, month, day, hour, minute, second, src_port)
 ) WITH CLUSTERING ORDER BY (year DESC, month DESC, day DESC, hour DESC, minute DESC, second DESC, src_port ASC);
 
@@ -577,6 +646,24 @@ CREATE TABLE kaspa.protocol_by_sport_hit_on_company_day(
     PRIMARY KEY ((company, protocol), year, month, day, src_port)
 ) WITH CLUSTERING ORDER BY (year DESC, month DESC, day DESC, src_port ASC);
 
+CREATE TABLE kaspa.protocol_by_sport_hit_on_company_month(
+    company text,
+    protocol text,
+    src_port text,
+    value bigint,
+    year int,
+    month int,
+    PRIMARY KEY ((company, protocol), year, month, src_port)
+) WITH CLUSTERING ORDER BY (year DESC, month DESC, src_port ASC);
+
+CREATE TABLE kaspa.protocol_by_sport_hit_on_company_year(
+    company text,
+    protocol text,
+    src_port text,
+    value bigint,
+    year int,
+    PRIMARY KEY ((company, protocol), year, src_port)
+) WITH CLUSTERING ORDER BY (year DESC, src_port ASC);
 
 
 
@@ -630,9 +717,28 @@ CREATE TABLE kaspa.protocol_by_dport_hit_on_company_day(
     PRIMARY KEY ((company, protocol), year, month, day, dst_port)
 ) WITH CLUSTERING ORDER BY (year DESC, month DESC, day DESC, dst_port ASC);
 
+CREATE TABLE kaspa.protocol_by_dport_hit_on_company_month(
+    company text,
+    protocol text,
+    dst_port text,
+    value bigint,
+    year int,
+    month int,
+    PRIMARY KEY ((company, protocol), year, month, dst_port)
+) WITH CLUSTERING ORDER BY (year DESC, month DESC, dst_port ASC);
+
+CREATE TABLE kaspa.protocol_by_dport_hit_on_company_year(
+    company text,
+    protocol text,
+    dst_port text,
+    value bigint,
+    year int,
+    PRIMARY KEY ((company, protocol), year, dst_port)
+) WITH CLUSTERING ORDER BY (year DESC, dst_port ASC);
 
 
-CREATE TABLE kaspa.protocol_by_sport_hit_on_device_id_second(
+
+CREATE TABLE kaspa.protocol_by_sport_hit_on_device_id_sec(
     device_id text,
     protocol text,
     src_port text,
@@ -682,6 +788,24 @@ CREATE TABLE kaspa.protocol_by_sport_hit_on_device_id_day(
     PRIMARY KEY ((device_id, protocol), year, month, day, src_port)
 ) WITH CLUSTERING ORDER BY (year DESC, month DESC, day DESC, src_port ASC);
 
+CREATE TABLE kaspa.protocol_by_sport_hit_on_device_id_month(
+    device_id text,
+    protocol text,
+    src_port text,
+    value bigint,
+    year int,
+    month int,
+    PRIMARY KEY ((device_id, protocol), year, month, src_port)
+) WITH CLUSTERING ORDER BY (year DESC, month DESC, src_port ASC);
+
+CREATE TABLE kaspa.protocol_by_sport_hit_on_device_id_year(
+    device_id text,
+    protocol text,
+    src_port text,
+    value bigint,
+    year int,
+    PRIMARY KEY ((device_id, protocol), year, src_port)
+) WITH CLUSTERING ORDER BY (year DESC, src_port ASC);
 
 
 
@@ -735,6 +859,24 @@ CREATE TABLE kaspa.protocol_by_dport_hit_on_device_id_day(
     PRIMARY KEY ((device_id, protocol), year, month, day, dst_port)
 ) WITH CLUSTERING ORDER BY (year DESC, month DESC, day DESC, dst_port ASC);
 
+CREATE TABLE kaspa.protocol_by_dport_hit_on_device_id_month(
+    device_id text,
+    protocol text,
+    dst_port text,
+    value bigint,
+    year int,
+    month int,
+    PRIMARY KEY ((device_id, protocol), year, month, dst_port)
+) WITH CLUSTERING ORDER BY (year DESC, month DESC, dst_port ASC);
+
+CREATE TABLE kaspa.protocol_by_dport_hit_on_device_id_year(
+    device_id text,
+    protocol text,
+    dst_port text,
+    value bigint,
+    year int,
+    PRIMARY KEY ((device_id, protocol), year, dst_port)
+) WITH CLUSTERING ORDER BY (year DESC, dst_port ASC);
 
 
 
@@ -788,7 +930,24 @@ CREATE TABLE kaspa.ip_source_hit_on_company_day(
     PRIMARY KEY ((company), year, month, day, src_ip)
 ) WITH CLUSTERING ORDER BY (year DESC, month DESC, day DESC, src_ip ASC)
 
+CREATE TABLE kaspa.ip_source_hit_on_company_month(
+    company text,
+    src_ip text,
+    country text,
+    value bigint,
+    year int,
+    month int,
+    PRIMARY KEY ((company), year, month, src_ip)
+) WITH CLUSTERING ORDER BY (year DESC, month DESC, src_ip ASC)
 
+CREATE TABLE kaspa.ip_source_hit_on_company_year(
+    company text,
+    src_ip text,
+    country text,
+    value bigint,
+    year int,
+    PRIMARY KEY ((company), year, src_ip)
+) WITH CLUSTERING ORDER BY (year DESC, src_ip ASC)
 
 
 CREATE TABLE kaspa.ip_dest_hit_on_company_sec(
@@ -841,6 +1000,24 @@ CREATE TABLE kaspa.ip_dest_hit_on_company_day(
     PRIMARY KEY ((company), year, month, day, dest_ip)
 ) WITH CLUSTERING ORDER BY (year DESC, month DESC, day DESC, dest_ip ASC)
 
+CREATE TABLE kaspa.ip_dest_hit_on_company_month(
+    company text,
+    dest_ip text,
+    country text,
+    value bigint,
+    year int,
+    month int,
+    PRIMARY KEY ((company), year, month, dest_ip)
+) WITH CLUSTERING ORDER BY (year DESC, month DESC, dest_ip ASC)
+
+CREATE TABLE kaspa.ip_dest_hit_on_company_year(
+    company text,
+    dest_ip text,
+    country text,
+    value bigint,
+    year int,
+    PRIMARY KEY ((company), year, dest_ip)
+) WITH CLUSTERING ORDER BY (year DESC, dest_ip ASC)
 
 
 
@@ -894,6 +1071,24 @@ CREATE TABLE kaspa.ip_source_hit_on_device_id_day(
     PRIMARY KEY ((device_id), year, month, day, src_ip)
 ) WITH CLUSTERING ORDER BY (year DESC, month DESC, day DESC, src_ip ASC);
 
+CREATE TABLE kaspa.ip_source_hit_on_device_id_month(
+    device_id text,
+    src_ip text,
+    country text,
+    value bigint,
+    year int,
+    month int,
+    PRIMARY KEY ((device_id), year, month, src_ip)
+) WITH CLUSTERING ORDER BY (year DESC, month DESC, src_ip ASC);
+
+CREATE TABLE kaspa.ip_source_hit_on_device_id_year(
+    device_id text,
+    src_ip text,
+    country text,
+    value bigint,
+    year int,
+    PRIMARY KEY ((device_id), year, src_ip)
+) WITH CLUSTERING ORDER BY (year DESC, src_ip ASC);
 
 
 
@@ -947,8 +1142,24 @@ CREATE TABLE kaspa.ip_dest_hit_on_device_id_day(
     PRIMARY KEY ((device_id), year, month, day, dest_ip)
 ) WITH CLUSTERING ORDER BY (year DESC, month DESC, day DESC, dest_ip ASC);
 
+CREATE TABLE kaspa.ip_dest_hit_on_device_id_month(
+    device_id text,
+    dest_ip text,
+    country text,
+    value bigint,
+    year int,
+    month int,
+    PRIMARY KEY ((device_id), year, month, dest_ip)
+) WITH CLUSTERING ORDER BY (year DESC, month DESC, dest_ip ASC);
 
-
+CREATE TABLE kaspa.ip_dest_hit_on_device_id_year(
+    device_id text,
+    dest_ip text,
+    country text,
+    value bigint,
+    year int,
+    PRIMARY KEY ((device_id), year, dest_ip)
+) WITH CLUSTERING ORDER BY (year DESC, dest_ip ASC);
 
 
 
@@ -998,9 +1209,22 @@ CREATE TABLE kaspa.country_source_hit_on_company_day(
     PRIMARY KEY ((company), year, month, day, src_country)
 ) WITH CLUSTERING ORDER BY (year DESC, month DESC, day DESC, src_country ASC);
 
+CREATE TABLE kaspa.country_source_hit_on_company_month(
+    company text,
+    src_country text,
+    value bigint,
+    year int,
+    month int,
+    PRIMARY KEY ((company), year, month, src_country)
+) WITH CLUSTERING ORDER BY (year DESC, month DESC, src_country ASC);
 
-
-
+CREATE TABLE kaspa.country_source_hit_on_company_year(
+    company text,
+    src_country text,
+    value bigint,
+    year int,
+    PRIMARY KEY ((company), year, src_country)
+) WITH CLUSTERING ORDER BY (year DESC, src_country ASC);
 
 
 CREATE TABLE kaspa.country_dest_hit_on_company_second(
@@ -1049,7 +1273,22 @@ CREATE TABLE kaspa.country_dest_hit_on_company_day(
     PRIMARY KEY ((company), year, month, day, dest_country)
 ) WITH CLUSTERING ORDER BY (year DESC, month DESC, day DESC, dest_country ASC);
 
+CREATE TABLE kaspa.country_dest_hit_on_company_month(
+    company text,
+    dest_country text,
+    value bigint,
+    year int,
+    month int,
+    PRIMARY KEY ((company), year, month, dest_country)
+) WITH CLUSTERING ORDER BY (year DESC, month DESC, dest_country ASC);
 
+CREATE TABLE kaspa.country_dest_hit_on_company_year(
+    company text,
+    dest_country text,
+    value bigint,
+    year int,
+    PRIMARY KEY ((company), year, dest_country)
+) WITH CLUSTERING ORDER BY (year DESC, dest_country ASC);
 
 
 
@@ -1099,8 +1338,22 @@ CREATE TABLE kaspa.country_source_hit_on_device_id_day(
     PRIMARY KEY ((device_id), year, month, day, src_country)
 ) WITH CLUSTERING ORDER BY (year DESC, month DESC, day DESC, src_country ASC);
 
+CREATE TABLE kaspa.country_source_hit_on_device_id_month(
+    device_id text,
+    src_country text,
+    value bigint,
+    year int,
+    month int,
+    PRIMARY KEY ((device_id), year, month, src_country)
+) WITH CLUSTERING ORDER BY (year DESC, month DESC, src_country ASC);
 
-
+CREATE TABLE kaspa.country_source_hit_on_device_id_year(
+    device_id text,
+    src_country text,
+    value bigint,
+    year int,
+    PRIMARY KEY ((device_id), year, src_country)
+) WITH CLUSTERING ORDER BY (year DESC, src_country ASC);
 
 
 
@@ -1149,3 +1402,20 @@ CREATE TABLE kaspa.country_dest_hit_on_device_id_day(
     day int,
     PRIMARY KEY ((device_id), year, month, day, dest_country)
 ) WITH CLUSTERING ORDER BY (year DESC, month DESC, day DESC, dest_country ASC);
+
+CREATE TABLE kaspa.country_dest_hit_on_device_id_month(
+    device_id text,
+    dest_country text,
+    value bigint,
+    year int,
+    month int,
+    PRIMARY KEY ((device_id), year, month, dest_country)
+) WITH CLUSTERING ORDER BY (year DESC, month DESC, dest_country ASC);
+
+CREATE TABLE kaspa.country_dest_hit_on_device_id_year(
+    device_id text,
+    dest_country text,
+    value bigint,
+    year int,
+    PRIMARY KEY ((device_id), year, dest_country)
+) WITH CLUSTERING ORDER BY (year DESC, dest_country ASC);

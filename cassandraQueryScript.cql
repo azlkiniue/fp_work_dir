@@ -938,7 +938,7 @@ CREATE TABLE kaspa.ip_source_hit_on_company_month(
     year int,
     month int,
     PRIMARY KEY ((company), year, month, src_ip)
-) WITH CLUSTERING ORDER BY (year DESC, month DESC, src_ip ASC)
+) WITH CLUSTERING ORDER BY (year DESC, month DESC, src_ip ASC);
 
 CREATE TABLE kaspa.ip_source_hit_on_company_year(
     company text,
@@ -947,7 +947,7 @@ CREATE TABLE kaspa.ip_source_hit_on_company_year(
     value bigint,
     year int,
     PRIMARY KEY ((company), year, src_ip)
-) WITH CLUSTERING ORDER BY (year DESC, src_ip ASC)
+) WITH CLUSTERING ORDER BY (year DESC, src_ip ASC);
 
 
 CREATE TABLE kaspa.ip_dest_hit_on_company_sec(

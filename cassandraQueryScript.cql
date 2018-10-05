@@ -192,7 +192,7 @@ CREATE TABLE kaspa.raw_data_by_device_id(
     src_country text,
     src_region text,
     dest_country text,
-    dest_region text
+    dest_region text,
     PRIMARY KEY ((device_id), year, month, day, hour, minute, second, id)
 ) WITH CLUSTERING ORDER BY (year DESC, month DESC, day DESC, hour DESC, minute DESC, second DESC, id DESC);
 
@@ -223,7 +223,7 @@ CREATE TABLE kaspa.raw_data_by_company(
     src_country text,
     src_region text,
     dest_country text,
-    dest_region text
+    dest_region text,
     PRIMARY KEY ((company), device_id, year, month, day, hour, minute, second, id)
 ) WITH CLUSTERING ORDER BY (device_id ASC, year DESC, month DESC, day DESC, hour DESC, minute DESC, second DESC);
 

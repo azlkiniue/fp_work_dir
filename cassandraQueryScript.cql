@@ -167,6 +167,7 @@ CREATE TABLE kaspa.user(
 
 CREATE TABLE kaspa.raw_data_by_device_id(
     id uuid,
+    ts text,
     company text,
     device_id text,
     year int,
@@ -198,6 +199,7 @@ CREATE TABLE kaspa.raw_data_by_device_id(
 
 CREATE TABLE kaspa.raw_data_by_company(
     id uuid,
+    ts text,
     company text,
     device_id text,
     year int,

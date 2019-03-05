@@ -4,6 +4,7 @@ CREATE KEYSPACE kaspa WITH replication = {'class': 'SimpleStrategy', 'replicatio
 USE kaspa;
 
 DROP TABLE IF EXISTS kaspa.sensor;
+DROP TABLE IF EXISTS kaspa.sensor_status;
 DROP TABLE IF EXISTS kaspa.user;
 
 DROP TABLE IF EXISTS kaspa.raw_data_by_device_id;
@@ -152,6 +153,13 @@ CREATE TABLE kaspa.sensor(
     topic_resp text,
     PRIMARY KEY (company, device_id)
 ) WITH CLUSTERING ORDER BY (device_id ASC);
+
+CREATE TABLE kaspa.sensor_status(
+	device_id text, 
+	status text, 
+	ts timestamp, 
+	PRIMARY KEY(device_id)
+);
 
 CREATE TABLE kaspa.user(
     username text,
